@@ -1,0 +1,24 @@
+{
+    "required": true,
+    "minVersion": "0.8",
+    "package": "supercoder79.cavegenmod.mixin",
+    "compatibilityLevel": "JAVA_16",
+    "mixins": [
+        "structurefix.MixinDesertPyramidPiece",
+        "structurefix.MixinJunglePyramidPiece",
+        "structurefix.MixinNetherBridgePieces_CastleSmallCorridorLeftTurnPiece",
+        "structurefix.MixinNetherBridgePieces_CastleSmallCorridorRightTurnPiece",
+        "structurefix.MixinNetherBridgePieces_MonsterThrone",
+        "structurefix.MixinStrongholdPieces_ChestCorridor",
+        "structurefix.MixinStrongholdPieces_PortalRoom",
+        "MixinChunkGenerator",
+        "MixinFuzzyOffsetConstantColumnBiomeZoomer",
+        "MixinMinecraft",
+        "MixinOverworldBiomeSource"
+    ],
+    "client": [
+    ],
+    "injectors": {
+        "defaultRequire": 1
+    }
+}
