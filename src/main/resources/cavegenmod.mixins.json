@@ -17,6 +17,7 @@
         "MixinOverworldBiomeSource"
     ],
     "client": [
+        "particle.MixinClientLevel"
     ],
     "injectors": {
         "defaultRequire": 1
