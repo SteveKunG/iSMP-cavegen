@@ -6,8 +6,10 @@ import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
+
 import net.minecraft.Util;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
@@ -23,11 +25,11 @@ public class MixinOverworldBiomeSource
 {
     @Shadow
     @Final
-    private Layer noiseBiomeLayer;
+    Layer noiseBiomeLayer;
 
     @Shadow
     @Final
-    private Registry<Biome> biomes;
+    Registry<Biome> biomes;
 
     @Unique
     private ImprovedNoise lushCavesNoise;
@@ -80,14 +82,14 @@ public class MixinOverworldBiomeSource
         var isDeepOceanBiome = isOceanBiome && this.getBiomesFromKeys(ImmutableList.of(Biomes.DEEP_FROZEN_OCEAN, Biomes.DEEP_COLD_OCEAN, Biomes.DEEP_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN, Biomes.DEEP_WARM_OCEAN)).contains(defaultBiome);
         var isHighLushBiome = this.getBiomesFromKeys(ImmutableList.of(Biomes.FOREST, Biomes.WOODED_HILLS, Biomes.FLOWER_FOREST, Biomes.PLAINS, Biomes.SUNFLOWER_PLAINS)).contains(defaultBiome) || defaultBiome.getBiomeCategory() == Biome.BiomeCategory.JUNGLE;
         var isLowLushHighDripBiome = ImmutableList.of(Biome.BiomeCategory.EXTREME_HILLS, Biome.BiomeCategory.MESA, Biome.BiomeCategory.DESERT, Biome.BiomeCategory.ICY).contains(defaultBiome.getBiomeCategory());
-        var fullyUndergroundY = isOceanBiome ? (isDeepOceanBiome ? 5 : 8) : 11;
+        var fullyUndergroundY = isOceanBiome ? isDeepOceanBiome ? 5 : 8 : 11;
         var partiallyUndergroundY = fullyUndergroundY + 2;
         //        var lushThreshold = isHighLushBiome ? 0.39F : (isLowLushHighDripBiome ? 0.45F : 0.42F);
-        var lushThreshold = isHighLushBiome ? 0.10F : (isLowLushHighDripBiome ? 0.22F : 0.18F);
+        var lushThreshold = isHighLushBiome ? 0.10F : isLowLushHighDripBiome ? 0.22F : 0.18F;
         //        var dripThreshold = isLowLushHighDripBiome ? 0.39F : 0.42F;
         var dripThreshold = isLowLushHighDripBiome ? 0.08F : 0.16F;
         //        var lushFreq = isHighLushBiome ? 50.0D : (isLowLushHighDripBiome ? 80.0D : 65.0D);
-        var lushFreq = isHighLushBiome ? 40.0D : (isLowLushHighDripBiome ? 60.0D : 45.0D);
+        var lushFreq = isHighLushBiome ? 40.0D : isLowLushHighDripBiome ? 60.0D : 45.0D;
         //        var dripFreq = isLowLushHighDripBiome ? 50.0D : 65.0D;
         var dripFreq = isLowLushHighDripBiome ? 20.0D : 30.0D;
 

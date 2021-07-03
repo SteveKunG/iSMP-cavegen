@@ -11,6 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 import org.spongepowered.asm.mixin.injection.Redirect;
+
 import net.minecraft.CrashReport;
 import net.minecraft.ReportedException;
 import net.minecraft.core.BlockPos;
@@ -27,7 +28,7 @@ public class MixinChunkGenerator
 {
     @Shadow
     @Final
-    protected BiomeSource biomeSource;
+    BiomeSource biomeSource;
 
     @Redirect(method = "generateStrongholds", at = @At(value = "INVOKE", target = "net/minecraft/world/level/biome/BiomeSource.findBiomeHorizontal(IIIILjava/util/function/Predicate;Ljava/util/Random;)Lnet/minecraft/core/BlockPos;"))
     private BlockPos findY64Biome(BiomeSource source, int x, int y, int z, int radius, Predicate<Biome> predicate, Random random)
@@ -69,7 +70,7 @@ public class MixinChunkGenerator
         }
         catch (Exception e)
         {
-            CrashReport crashReport = CrashReport.forThrowable(e, "Biome decoration");
+            var crashReport = CrashReport.forThrowable(e, "Biome decoration");
             crashReport.addCategory("Generation").setDetail("CenterX", chunkPos.x).setDetail("CenterZ", chunkPos.z).setDetail("Seed", l).setDetail("Biome", biome).setDetail("UndergroundBiome", underground);
             throw new ReportedException(crashReport);
         }
