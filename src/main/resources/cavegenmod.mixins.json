@@ -6,6 +6,7 @@
     "mixins": [
         "structurefix.MixinDesertPyramidPiece",
         "structurefix.MixinJunglePyramidPiece",
+        "structurefix.MixinMineShaftPieces_MineShaftCorridor",
         "structurefix.MixinNetherBridgePieces_CastleSmallCorridorLeftTurnPiece",
         "structurefix.MixinNetherBridgePieces_CastleSmallCorridorRightTurnPiece",
         "structurefix.MixinNetherBridgePieces_MonsterThrone",
