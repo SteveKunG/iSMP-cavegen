@@ -37,7 +37,7 @@ public class MixinOverworldBiomeSource
     @Unique
     private ImprovedNoise dripstoneCavesNoise;
 
-    @Inject(method = "<init>", at = @At("RETURN"))
+    @Inject(method = "<init>", at = @At("TAIL"))
     private void makeNoise(long seed, boolean legacyBiomeInitLayer, boolean largeBiomes, Registry<Biome> biomeRegistry, CallbackInfo info)
     {
         this.lushCavesNoise = new ImprovedNoise(new SimpleRandomSource(seed));
@@ -84,14 +84,10 @@ public class MixinOverworldBiomeSource
         var isLowLushHighDripBiome = ImmutableList.of(Biome.BiomeCategory.EXTREME_HILLS, Biome.BiomeCategory.MESA, Biome.BiomeCategory.DESERT, Biome.BiomeCategory.ICY).contains(defaultBiome.getBiomeCategory());
         var fullyUndergroundY = isOceanBiome ? isDeepOceanBiome ? 5 : 8 : 11;
         var partiallyUndergroundY = fullyUndergroundY + 2;
-        //        var lushThreshold = isHighLushBiome ? 0.39F : (isLowLushHighDripBiome ? 0.45F : 0.42F);
-        var lushThreshold = isHighLushBiome ? 0.10F : isLowLushHighDripBiome ? 0.22F : 0.18F;
-        //        var dripThreshold = isLowLushHighDripBiome ? 0.39F : 0.42F;
-        var dripThreshold = isLowLushHighDripBiome ? 0.08F : 0.16F;
-        //        var lushFreq = isHighLushBiome ? 50.0D : (isLowLushHighDripBiome ? 80.0D : 65.0D);
-        var lushFreq = isHighLushBiome ? 40.0D : isLowLushHighDripBiome ? 60.0D : 45.0D;
-        //        var dripFreq = isLowLushHighDripBiome ? 50.0D : 65.0D;
-        var dripFreq = isLowLushHighDripBiome ? 20.0D : 30.0D;
+        var lushThreshold = isHighLushBiome ? 0.1F : isLowLushHighDripBiome ? 0.2F : 0.16F;
+        var dripThreshold = isLowLushHighDripBiome ? 0.24F : 0.12F;
+        var lushFreq = isHighLushBiome ? 40.0D : isLowLushHighDripBiome ? 60.0D : 50.0D;
+        var dripFreq = isLowLushHighDripBiome ? 30.0D : 100.0D;
 
         if (biomeY < fullyUndergroundY)
         {
