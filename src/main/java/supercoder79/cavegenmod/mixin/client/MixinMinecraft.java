@@ -1,4 +1,4 @@
-package supercoder79.cavegenmod.mixin;
+package supercoder79.cavegenmod.mixin.client;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

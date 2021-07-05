@@ -14,11 +14,10 @@
         "structurefix.MixinStrongholdPieces_PortalRoom",
         "MixinChunkGenerator",
         "MixinFuzzyOffsetConstantColumnBiomeZoomer",
-        "MixinMinecraft",
         "MixinOverworldBiomeSource"
     ],
     "client": [
-        "particle.MixinClientLevel"
+        "client.MixinMinecraft"
     ],
     "injectors": {
         "defaultRequire": 1
