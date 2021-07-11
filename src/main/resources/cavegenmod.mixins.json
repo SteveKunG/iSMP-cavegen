@@ -17,6 +17,7 @@
         "MixinOverworldBiomeSource"
     ],
     "client": [
+        "client.MixinLevelRenderer",
         "client.MixinMinecraft"
     ],
     "injectors": {
