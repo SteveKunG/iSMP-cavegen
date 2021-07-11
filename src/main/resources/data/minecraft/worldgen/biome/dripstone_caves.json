@@ -168,7 +168,7 @@
   },
   "spawn_costs": {},
   "player_spawn_friendly": false,
-  "precipitation": "rain",
+  "precipitation": "none",
   "temperature": 0.8,
   "downfall": 0.4,
   "category": "underground",
