@@ -28,26 +28,26 @@ public class MixinLevelRenderer
 {
     @Shadow
     @Final
-    private Minecraft minecraft;
+    Minecraft minecraft;
 
     @Shadow
-    private int ticks;
-
-    @Shadow
-    @Final
-    private float[] rainSizeX;
+    int ticks;
 
     @Shadow
     @Final
-    private float[] rainSizeZ;
+    float[] rainSizeX;
 
     @Shadow
     @Final
-    private static ResourceLocation RAIN_LOCATION;
+    float[] rainSizeZ;
 
     @Shadow
     @Final
-    private static ResourceLocation SNOW_LOCATION;
+    static ResourceLocation RAIN_LOCATION;
+
+    @Shadow
+    @Final
+    static ResourceLocation SNOW_LOCATION;
 
     @Overwrite
     private void renderSnowAndRain(LightTexture lightTexture, float partialTicks, double xPos, double yPos, double zPos)
