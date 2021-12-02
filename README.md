@@ -8,3 +8,4 @@ Fork of https://github.com/SuperCoder7979/cavegen
 - Increased cave biomes frequency
 - Sodium compatible
 - Java 16 support
+- Stupid fix for chest loot generations
